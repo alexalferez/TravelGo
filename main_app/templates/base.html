@@ -19,6 +19,10 @@
         </ul>
         <ul class="right">
           <li><a href="/about">About</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% endif %}
+          <li><a href="{% url 'signup' %}">Sign up</a></li>
         </ul>
       </div>
     </nav>
