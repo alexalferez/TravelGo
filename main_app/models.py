@@ -12,7 +12,7 @@ CITIES = (
 
 class Profile(models.Model):
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     city = models.CharField(
         max_length=2,
         choices=CITIES,
@@ -27,7 +27,7 @@ class Profile(models.Model):
 ## for the form, we only need to get the location_name, city, description and date_posted
 ## and photo after the photo model is added.
 class Recommendation(models.Model):
-    userProfile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     location_name = models.CharField(max_length=100)
     city = models.CharField(
         max_length=2,
