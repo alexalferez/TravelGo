@@ -28,7 +28,7 @@ class Profile(models.Model):
 ## and photo after the photo model is added.
 class Recommendation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    location_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     city = models.CharField(
         max_length=2,
         choices=CITIES,
