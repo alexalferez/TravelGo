@@ -19,7 +19,7 @@ class Profile(models.Model):
         default=CITIES[0][0]
     )
     description = description = models.TextField(max_length=250)
-    # add recommendations field
+    #do we need a recommendations section?
 
     def __str__(self):
         return self.name
@@ -28,7 +28,7 @@ class Profile(models.Model):
 ## and photo after the photo model is added.
 class Recommendation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    location_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     city = models.CharField(
         max_length=2,
         choices=CITIES,
@@ -43,8 +43,8 @@ class Recommendation(models.Model):
 
     #we will add this when the recommendation detail route is set up. might need to change the
     #'detail' part depending on the route
-    # def get_absolute_url(self):
-    #     return reverse('detail', kawrgs={'recommendation_id': self.id})
+    def get_absolute_url(self):
+        return reverse('detail', kawrgs={'recommendation_id': self.id})
 
     
     ## Add photo class for photo model
