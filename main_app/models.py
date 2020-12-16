@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+from datetime import date
 from django.contrib.auth.models import User
 # Create your models here.
 CITIES = (
@@ -17,5 +19,32 @@ class Profile(models.Model):
         default=CITIES[0][0]
     )
     description = description = models.TextField(max_length=250)
+    # add recommendations field
+
     def __str__(self):
         return self.name
+
+## for the form, we only need to get the location_name, city, description and date_posted
+## and photo after the photo model is added.
+class Recommendation(models.Model):
+    userProfile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    location_name = models.CharField(max_length=100)
+    city = models.CharField(
+        max_length=2,
+        choices=CITIES,
+        default=CITIES[0][0]
+    )
+    description = models.TextField(max_length=250)
+    # add photos field
+    date_posted = date.today()
+
+    def __str__(self):
+        return self.name
+
+    #we will add this when the recommendation detail route is set up. might need to change the
+    #'detail' part depending on the route
+    # def get_absolute_url(self):
+    #     return reverse('detail', kawrgs={'recommendation_id': self.id})
+
+    
+    ## Add photo class for photo model
