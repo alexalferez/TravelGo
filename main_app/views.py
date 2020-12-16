@@ -29,8 +29,8 @@ def signup(request):
 
 class RecommendationCreate(LoginRequiredMixin, CreateView):
   model = Recommendation
-  fields = ['name', 'user', 'city','description']
-
+  fields = ['name', 'city','description']
+  # assigns the user (self.request.user)
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
@@ -69,14 +69,4 @@ class ProfileUpdate(UpdateView):
 class ProfileDelete(DeleteView):
   model = Profile
 
-
-def add_recommendation(request):
-  form = RecommendationForm(request.POST)
-
-  if form.is_valid():
-    new_recommendation = form.save(commit=False)
-    new_recommendation.user_id = user_id
-    print(new_recommendation, "<----- new_rec")
-    new_recommendation.save()
-  return redirect('detail')
 
