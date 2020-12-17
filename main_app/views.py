@@ -19,7 +19,6 @@ from django.http import HttpResponse
 S3_BASE_URL = 'https://s3.us-west-2.amazonaws.com/' # base url
 BUCKET = 'travelgo' # bucket name
 
-
 # Define the home view
 def signup(request):
   error_message = ''
@@ -99,4 +98,3 @@ def add_photo(request, recommendation_id):
         except:
             print('An error occurred uploading file to S3')
     return redirect('detail', recommendation_id=recommendation_id)
-
