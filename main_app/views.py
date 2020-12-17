@@ -64,6 +64,10 @@ def recommendations_detail(request, recommendation_id):
   print(recommendation.__dict__, "name of town")
   return render(request, './recommendations/detail.html', { 'recommendation': recommendation})
 
+def profile_index(request):
+  return render(request, './user_profile.create.html')
+  
+
 class ProfileList(ListView):
   model = Profile
 

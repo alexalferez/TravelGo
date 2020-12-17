@@ -16,6 +16,10 @@ body{
   font-weight: 500 !important;
 }
 
+.card-content{
+  text-align: left !important;
+}
+
 .card-content p {
   font-size: 16px !important;
   font-weight: 300;
@@ -28,4 +32,8 @@ body{
 
 .row a{
   color: #000;
+}
+
+.col.l1.user-specs{
+  margin: 0 25px;
 }
