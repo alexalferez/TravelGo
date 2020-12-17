@@ -54,13 +54,15 @@ class RecommendationDelete(DeleteView):
 
 def home(request):
   recommendations = Recommendation.objects.all()
-  return render(request, 'home.html', { 'recommendation': recommendations })
+  return render(request, 'home.html', { 'reccommendations': recommendations })
 
 def about(request):
     return render(request, 'about.html')
 
 def recommendations_detail(request, recommendation_id):
   recommendation = Recommendation.objects.get(id=recommendation_id)
+
+  print(recommendation.__dict__, "name of town")
   return render(request, './recommendations/detail.html', { 'recommendation': recommendation})
 
 class ProfileList(ListView):
