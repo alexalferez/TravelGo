@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for rec in recs %}
+{% for rec in reccommendations %}
 <div class="row">
   <a href="{% url 'detail' rec.id %}">
     <div class="col l6 offset-l3 m8 offset-m2">
       <div class="card">
-        {% if rec.img %}
+        {% if rec.photo_set %}
         <div class="card-image">
           <img src="https://images.unsplash.com/photo-1590144662036-33bf0ebd2c7f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80">
           <span class="card-title">Disneyland<br>{{ rec.city}}</span>
         </div>
         <div class="card-content">
           <p>{{ rec.description }}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">#{{ rec.name }}</a>
+          <a href="#">View more in {{ rec.city }}</a>
         </div>
         {% else %}
         <div class="card-content">
