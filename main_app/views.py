@@ -3,13 +3,22 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile, Recommendation
+from .models import Profile, Recommendation, Photo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RecommendationForm
+# photo imports below
+import uuid
+import boto3
+
 
 # Create your views here.
 from django.http import HttpResponse
+
+#Photo Constants
+S3_BASE_URL = 'https://s3.us-west-2.amazonaws.com/' # base url
+BUCKET = 'travelgo' # bucket name
+
 
 # Define the home view
 def signup(request):
@@ -52,7 +61,9 @@ def about(request):
 
 def recommendations_detail(request, recommendation_id):
   recommendation = Recommendation.objects.get(id=recommendation_id)
-  return render(request, './recommendations/detail.html')
+  return render(request, './recommendations/detail.html',
+    {'recommendation': recommendation}
+  )
 
 class ProfileList(ListView):
   model = Profile
@@ -70,3 +81,20 @@ class ProfileDelete(DeleteView):
   model = Profile
 
 
+def add_photo(request, recommendation_id):
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # build the full url string
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            # we can assign to recommendation_id or recommendation (if you have a recommendation object)
+            Photo.objects.create(url=url, recommendation_id=recommendation_id)
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('detail', recommendation_id=recommendation_id)

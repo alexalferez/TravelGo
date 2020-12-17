@@ -8,6 +8,7 @@ urlpatterns = [
     path('recommendations/create/', views.RecommendationCreate.as_view(), name='create'),
     path('recommendations/<int:pk>/update/', views.RecommendationUpdate.as_view(), name='update'),
     path('recommendations/<int:pk>/delete/', views.RecommendationDelete.as_view(), name='delete'),
+    path('recommendations/<int:recommendation_id>/add_photo/', views.add_photo, name='add_photo'),
     path('profile/', views.ProfileList.as_view(), name='profile_index'),
     path('profile/<int:pk>/', views.ProfileDetail.as_view(), name='profile_detail'),
     path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
