@@ -45,14 +45,15 @@ class RecommendationDelete(DeleteView):
 
 def home(request):
   recommendations = Recommendation.objects.all()
-  return render(request, 'home.html', { 'recommendations': recommendations })
+  return render(request, 'home.html', { 'recs': recommendations })
 
 def about(request):
     return render(request, 'about.html')
 
 def recommendations_detail(request, recommendation_id):
   recommendation = Recommendation.objects.get(id=recommendation_id)
-  return render(request, './recommendations/detail.html')
+  print(recommendation.__dict__, "name of town")
+  return render(request, './recommendations/detail.html', { 'rec': recommendation})
 
 class ProfileList(ListView):
   model = Profile
@@ -68,5 +69,3 @@ class ProfileUpdate(UpdateView):
 
 class ProfileDelete(DeleteView):
   model = Profile
-
-

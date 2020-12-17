@@ -44,7 +44,7 @@ class Recommendation(models.Model):
     #we will add this when the recommendation detail route is set up. might need to change the
     #'detail' part depending on the route
     def get_absolute_url(self):
-        return reverse('detail', kawrgs={'recommendation_id': self.id})
+        return reverse('detail', kwargs={'recommendation_id': self.id})
 
     
     ## Add photo class for photo model
