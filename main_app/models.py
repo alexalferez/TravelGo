@@ -47,4 +47,10 @@ class Recommendation(models.Model):
         return reverse('detail', kwargs={'recommendation_id': self.id})
 
     
-    ## Add photo class for photo model
+## Add photo class for photo model
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    recommendation = models.ForeignKey(Recommendation, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for recommendation_id: {self.recommendation_id} @{self.url}"
