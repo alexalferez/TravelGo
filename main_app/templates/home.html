@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for rec in reccommendations %}
+
+{% for rec in recommendations %}
+
 <div class="row">
   <a href="{% url 'detail' rec.id %}">
     <div class="col l6 offset-l3 m8 offset-m2">
