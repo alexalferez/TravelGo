@@ -1,3 +1,31 @@
-/* .nav-wrapper {
-  background-color: blue !important;
-} */
+
+body{
+  background-color: #fbfbfb;
+  font-family: Helvetica Neue, arial, sans-serif;
+}
+
+.navbar-fixed{
+  margin-bottom: 50px;
+}
+
+.nav-wrapper{
+  background: #87ceeb !important;
+}
+
+.card-title{
+  font-weight: 500 !important;
+}
+
+.card-content p {
+  font-size: 16px !important;
+  font-weight: 300;
+}
+
+
+#first-card-top-pad{
+  padding-top: 50px !important;;
+}
+
+.row a{
+  color: #000;
+}
