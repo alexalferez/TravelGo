@@ -54,7 +54,7 @@ class RecommendationDelete(DeleteView):
 
 def home(request):
   recommendations = Recommendation.objects.all()
-  return render(request, 'home.html', { 'reccommendations': recommendations })
+  return render(request, 'home.html', { 'recommendations': recommendations })
 
 def about(request):
     return render(request, 'about.html')
