@@ -14,7 +14,7 @@
           <span class="card-title">Disneyland<br>{{ rec.city}}</span>
         </div>
         <div class="card-content">
-          <p>{{ rec.description }}</p>
+          <p>{{ rec.user }}: {{ rec.description }}</p>
         </div>
         <div class="card-action">
           <a href="#">#{{ rec.name }}</a>
@@ -23,7 +23,7 @@
         {% else %}
         <div class="card-content">
           <span class="card-title">{{ rec.name }}</span>
-          <p>{{ rec.description }}</p>
+          <p>{{ rec.user }}: {{ rec.description }}</p>
         </div>
         <div class="card-action">
           <a href="#">#{{ rec.name }}</a>
