@@ -7,6 +7,7 @@ from .models import Profile, Recommendation, Photo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RecommendationForm
+from django.shortcuts import get_object_or_404
 # photo imports below
 import uuid
 import boto3
@@ -98,3 +99,17 @@ def add_photo(request, recommendation_id):
         except:
             print('An error occurred uploading file to S3')
     return redirect('detail', recommendation_id=recommendation_id)
+
+
+class RecommendationCityList(ListView):
+  template_name = 'recommendations/recommendation_city.html'
+  def get_queryset(self):
+    self.city = get_object_or_404(Recommendation, main = self.kwargs['city'])
+    return Recommendation.objects.filter(city=city)
+
+  def get_context_data(self, **kwargs):
+      # Call the base implementation first to get a context
+    context = super().get_context_data(**kwargs)
+    # Add in the publisher
+    context['city'] = self.recommendation
+    return context
