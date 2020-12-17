@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cat Collector</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -25,6 +26,7 @@
           {% endif %}
           <li><a href="{% url 'signup' %}">Sign up</a></li>
           <li><a href="{% url 'create' %}">Add Recommendation</a></li>
+          <li><a href="{% url 'profile_index' %}">Profile</a></li>
         </ul>
       </div>
     </nav>
