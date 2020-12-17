@@ -102,6 +102,7 @@ def add_photo(request, recommendation_id):
 
 
 class RecommendationCityList(ListView):
+  print("hitting the route")
   template_name = 'recommendations/recommendation_city.html'
   def get_queryset(self):
     self.city = get_object_or_404(Recommendation, main = self.kwargs['city'])
