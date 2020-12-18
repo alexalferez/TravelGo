@@ -106,10 +106,13 @@ def add_photo(request, recommendation_id):
 
 
 class RecommendationCityList(ListView):
+  
   template_name = 'recommendations/recommendation_city.html'
   def get_queryset(self):
-    self.city = get_object_or_404(Recommendation, main = self.kwargs['city'])
-    return Recommendation.objects.filter(city=city)
+    print(self.kwargs['city'], "self.kwargs['city']<------------------")
+    self.city = get_object_or_404(Recommendation, city = self.kwargs['city'])
+    return Recommendation.objects.filter(city=self.city)
+
 
   def get_context_data(self, **kwargs):
       # Call the base implementation first to get a context
