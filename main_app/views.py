@@ -28,7 +28,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('home')
+      return redirect('profile_create')
     else:
       error_message = "Invalid sign up - try again"
   
@@ -77,7 +77,7 @@ class ProfileDetail(DetailView):
 
 class ProfileCreate(CreateView):
   model = Profile
-
+  fields = '__all__'
 class ProfileUpdate(UpdateView):
   model = Profile
 
