@@ -9,4 +9,4 @@ class RecommendationForm(ModelForm):
 class ProfileForm(ModelForm):
   class Meta:
     model = Profile
-    fields = ['name', 'user', 'city']
+    fields = ['name','user','city','description']
