@@ -3,11 +3,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile, Recommendation, Photo
+from .models import Profile, Recommendation, Photo, CITIES
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RecommendationForm
-from django.shortcuts import get_object_or_404
+# from django.shortcuts import get_object_or_404
 # photo imports below
 import uuid
 import boto3
@@ -28,7 +28,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('home')
+      return redirect('profile_create')
     else:
       error_message = "Invalid sign up - try again"
   
@@ -77,7 +77,7 @@ class ProfileDetail(DetailView):
 
 class ProfileCreate(CreateView):
   model = Profile
-
+  fields = '__all__'
 class ProfileUpdate(UpdateView):
   model = Profile
 
@@ -106,14 +106,25 @@ def add_photo(request, recommendation_id):
 
 
 class RecommendationCityList(ListView):
+  
   template_name = 'recommendations/recommendation_city.html'
   def get_queryset(self):
-    self.city = get_object_or_404(Recommendation, main = self.kwargs['city'])
-    return Recommendation.objects.filter(city=city)
+    print(self.kwargs['city'], "self.kwargs['city']<------------------")
+    if self.kwargs['city'] == 'seattle':
+      print("seattle in kwargs <--------------")
+      self.kwargs['city'] = 'S'
+    elif self.kwargs['city'] == 'portland':
+      
+      
+    # self.city = get_object_or_404(Recommendation, city=self.kwargs['city'])
+    # print(self.city, "<---------------- self.city")
+    return Recommendation.objects.filter(city=self.kwargs['city'])
+
 
   def get_context_data(self, **kwargs):
       # Call the base implementation first to get a context
     context = super().get_context_data(**kwargs)
     # Add in the publisher
-    context['city'] = self.recommendation
+    context['city'] = self.kwargs['city']
+    print(context, "context <----------------")
     return context
