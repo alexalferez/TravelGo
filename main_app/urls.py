@@ -14,6 +14,6 @@ urlpatterns = [
     path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
     path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
     path('profile/<int:pk>/delete/', views.ProfileDelete.as_view(), name='profile_delete'),
-    path('recommendations/<str:city>/', views.RecommendationCityList.as_view(), name='city_index'),
+    path('recommendations/city>/', views.RecommendationCityList.as_view(), name='city_index'),
     path('accounts/signup/', views.signup, name='signup'),
 ]
