@@ -18,7 +18,7 @@
           <div class="card-action">
             <a href="">#{{ rec.name }}</a>
             
-            <a href="{% url 'city_index' rec.get_city_url %}">View more in {{ rec.get_city_display }}</a>
+            <a href="{% url 'city_index' rec.get_city_url %}">View more from {{ rec.user }}</a>
           </div>
           {% else %}
           <div class="card-content">
@@ -27,7 +27,7 @@
           </div>
           <div class="card-action">
             <a href="#">#{{ rec.name }}</a>
-            <a href="#">View more in {{ rec.city }}</a>
+            <a href="#">View more from {{ rec.user }}</a>
           </div>
           {% endif %}
         </div>
