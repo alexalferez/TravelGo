@@ -65,8 +65,6 @@ def recommendations_detail(request, recommendation_id):
   print(recommendation.__dict__, "name of town")
   return render(request, './recommendations/detail.html', { 'recommendation': recommendation})
 
-def profile_index(request):
-  return render(request, './user_profile.create.html')
   
 
 class ProfileList(ListView):
@@ -77,13 +75,17 @@ class ProfileDetail(DetailView):
 
 class ProfileCreate(CreateView):
   model = Profile
-  fields = '__all__'
+  fields = ['name', 'city','description']
+  
+
+
 class ProfileUpdate(UpdateView):
   model = Profile
+  fields = ['name', 'city','description']
 
 class ProfileDelete(DeleteView):
-
   model = Profile
+  success_url = '/'
 
 
 def add_photo(request, recommendation_id):

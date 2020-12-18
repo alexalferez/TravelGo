@@ -18,4 +18,5 @@ urlpatterns = [
     path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
     path('profile/<int:pk>/delete/', views.ProfileDelete.as_view(), name='profile_delete'),
     path('accounts/signup/', views.signup, name='signup'),
+    
 ]
