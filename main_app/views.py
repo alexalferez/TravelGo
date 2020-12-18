@@ -73,10 +73,13 @@ class ProfileList(ListView):
 class ProfileDetail(DetailView):
   model = Profile
 
-class ProfileCreate(CreateView):
+class ProfileCreate(LoginRequiredMixin, CreateView):
   model = Profile
-  fields = ['name', 'city','description']
+  fields = ['name','city','description']
   
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 
 class ProfileUpdate(UpdateView):
