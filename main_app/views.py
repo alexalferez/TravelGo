@@ -65,9 +65,6 @@ def recommendations_detail(request, recommendation_id):
   print(recommendation.__dict__, "name of town")
   return render(request, './recommendations/detail.html', { 'recommendation': recommendation})
 
-def profile_index(request):
-  profiles = Profile.objects.all()
-  return render(request, './user_profile.create.html')
   
 
 class ProfileList(ListView):
@@ -76,17 +73,15 @@ class ProfileList(ListView):
 class ProfileDetail(DetailView):
   model = Profile
 
-class ProfileCreate(LoginRequiredMixin, CreateView):
+class ProfileCreate(CreateView):
   model = Profile
-  fields = '__all__'
+  fields = ['name', 'city','description']
+  
 
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
 
 class ProfileUpdate(UpdateView):
   model = Profile
-  fields = ['name', 'city','discrpition']
+  fields = ['name', 'city','description']
 
 class ProfileDelete(DeleteView):
   model = Profile

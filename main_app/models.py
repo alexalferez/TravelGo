@@ -18,7 +18,7 @@ class Profile(models.Model):
         choices=CITIES,
         default=CITIES[0][0]
     )
-    description = description = models.TextField(max_length=250)
+    description = models.TextField(max_length=250)
     #do we need a recommendations section?
 
     def __str__(self):
