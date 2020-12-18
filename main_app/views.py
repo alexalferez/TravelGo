@@ -122,8 +122,6 @@ class RecommendationCityList(ListView):
     # self.city = get_object_or_404(Recommendation, city=self.kwargs['city'])
     # print(self.city, "<---------------- self.city")
     
-
-
   def get_context_data(self, **kwargs):
       # Call the base implementation first to get a context
     context = super().get_context_data(**kwargs)
