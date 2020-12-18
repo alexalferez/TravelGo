@@ -3,11 +3,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile, Recommendation, Photo
+from .models import Profile, Recommendation, Photo, CITIES
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RecommendationForm
-from django.shortcuts import get_object_or_404
+# from django.shortcuts import get_object_or_404
 # photo imports below
 import uuid
 import boto3
@@ -113,6 +113,8 @@ class RecommendationCityList(ListView):
     if self.kwargs['city'] == 'seattle':
       print("seattle in kwargs <--------------")
       self.kwargs['city'] = 'S'
+    elif self.kwargs['city'] == 'portland':
+      
       
     # self.city = get_object_or_404(Recommendation, city=self.kwargs['city'])
     # print(self.city, "<---------------- self.city")
