@@ -66,6 +66,7 @@ def recommendations_detail(request, recommendation_id):
   return render(request, './recommendations/detail.html', { 'recommendation': recommendation})
 
 def profile_index(request):
+  profiles = Profile.objects.all()
   return render(request, './user_profile.create.html')
   
 
@@ -75,15 +76,21 @@ class ProfileList(ListView):
 class ProfileDetail(DetailView):
   model = Profile
 
-class ProfileCreate(CreateView):
+class ProfileCreate(LoginRequiredMixin, CreateView):
   model = Profile
   fields = '__all__'
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
 class ProfileUpdate(UpdateView):
   model = Profile
+  fields = ['name', 'city','discrpition']
 
 class ProfileDelete(DeleteView):
-
   model = Profile
+  success_url = '/'
 
 
 def add_photo(request, recommendation_id):
