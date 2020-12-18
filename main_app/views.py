@@ -110,10 +110,6 @@ class RecommendationCityList(ListView):
   template_name = 'recommendations/recommendation_city.html'
   def get_queryset(self):
     print(self.kwargs['city'], "self.kwargs['city']<------------------")
-    # if self.kwargs['city'] == 'seattle':
-    #   print("seattle in kwargs <--------------")
-    #   self.kwargs['city'] = 'S'
-    # elif self.kwargs['city'] == 'portland':
     for c in CITIES:
       if self.kwargs['city'] == c[1].lower().replace(" ", ""):
         print(self.kwargs['city'], "city kwarg <---------===")
