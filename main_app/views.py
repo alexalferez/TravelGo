@@ -110,17 +110,19 @@ class RecommendationCityList(ListView):
   template_name = 'recommendations/recommendation_city.html'
   def get_queryset(self):
     print(self.kwargs['city'], "self.kwargs['city']<------------------")
-    if self.kwargs['city'] == 'seattle':
-      print("seattle in kwargs <--------------")
-      self.kwargs['city'] = 'S'
-    elif self.kwargs['city'] == 'portland':
-      
+    #Loop through cities comparing their lowercase no space to city
+    for c in CITIES:
+      if self.kwargs['city'] == c[1].lower().replace(" ", ""):
+        print(self.kwargs['city'], "city kwarg <---------===")
+        self.kwargs['city'] = c[0]
+        return Recommendation.objects.filter(city=self.kwargs['city'])
+      else:
+        error_message = "Invalid URL(404)"
+
       
     # self.city = get_object_or_404(Recommendation, city=self.kwargs['city'])
     # print(self.city, "<---------------- self.city")
-    return Recommendation.objects.filter(city=self.kwargs['city'])
-
-
+    
   def get_context_data(self, **kwargs):
       # Call the base implementation first to get a context
     context = super().get_context_data(**kwargs)
