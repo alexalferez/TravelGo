@@ -61,3 +61,15 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for recommendation_id: {self.recommendation_id} @{self.url}"
+
+class Comment(models.Model):
+    comment = models.TextField(max_length=250)
+    recommendation = models.ForeignKey(Recommendation, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #update with post date
+    def __str__(self):
+        return f"comment for {self.recommendation} by {self.user} on {self.date}"
+
+    # change the default sort
+    # class Meta:
+    #     ordering = ['-date']
