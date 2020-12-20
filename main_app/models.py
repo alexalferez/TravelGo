@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.utils import timezone
 from django.contrib.auth.models import User
 # Create your models here.
 CITIES = (
@@ -39,7 +40,15 @@ class Recommendation(models.Model):
     )
     description = models.TextField(max_length=250)
     # add photos field
-    date_posted = date.today()
+    created     = models.DateTimeField(editable=False)
+    modified    = models.DateTimeField(editable=False)
+
+    def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.created = timezone.now()
+        self.modified = timezone.now()
+        return super(Recommendation, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -63,13 +72,21 @@ class Photo(models.Model):
         return f"Photo for recommendation_id: {self.recommendation_id} @{self.url}"
 
 class Comment(models.Model):
-    date = date.today()
+    created     = models.DateTimeField(editable=False)
+    modified    = models.DateTimeField(editable=False)
     comment = models.TextField(max_length=250)
     recommendation = models.ForeignKey(Recommendation, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
-    def __str__(self):
-        return f"comment for {self.recommendation} by {self.user} on {self.date}"
+    def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.created = timezone.now()
+        self.modified = timezone.now()
+        return super(Comment, self).save(*args, **kwargs)
 
-    # class Meta:
-    #     ordering = ['-date']quit
+    def __str__(self):
+        return f"comment for {self.recommendation} by {self.user} on {self.created}"
+
+    class Meta:
+        ordering = ['-created']
