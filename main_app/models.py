@@ -63,6 +63,7 @@ class Photo(models.Model):
         return f"Photo for recommendation_id: {self.recommendation_id} @{self.url}"
 
 class Comment(models.Model):
+    date = date.today() 
     comment = models.TextField(max_length=250)
     recommendation = models.ForeignKey(Recommendation, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -72,4 +73,4 @@ class Comment(models.Model):
 
     # change the default sort
     # class Meta:
-    #     ordering = ['-date']
+    #     ordering = ['-date_posted']
