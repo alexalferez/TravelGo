@@ -58,6 +58,7 @@ class Recommendation(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'recommendation_id': self.id})
 
+    # creates a string to use as a url on home page
     def get_city_url(self):
         return self.get_city_display().lower().replace(" ", "")
         
