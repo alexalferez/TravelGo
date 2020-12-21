@@ -61,9 +61,9 @@ def about(request):
 
 def recommendations_detail(request, recommendation_id):
   recommendation = Recommendation.objects.get(id=recommendation_id)
-
+  comment = Comment.objects.get(id=recommendation_id)
   print(recommendation.__dict__, "name of town")
-  return render(request, './recommendations/detail.html', { 'recommendation': recommendation})
+  return render(request, './recommendations/detail.html', { 'recommendation': recommendation}, {'comment':comment})
 
   
 
@@ -72,6 +72,7 @@ class ProfileList(ListView):
 
 class ProfileDetail(DetailView):
   model = Profile
+  success_url = '/'
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
   model = Profile
@@ -88,7 +89,7 @@ class ProfileUpdate(UpdateView):
 
 class ProfileDelete(DeleteView):
   model = Profile
-  success_url = '/'
+  success_url = ''
 
 def add_comment(request, recommendation_id):
   form = CommentForm(request.POST)
