@@ -84,6 +84,7 @@ class Comment(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
+        self.recommendation = self.user.recommendation_set.first()
         return super(Comment, self).save(*args, **kwargs)
 
     def __str__(self):
