@@ -42,3 +42,17 @@ body{
   text-align: left;
   padding-left: 20% !important;
 }
+
+/* .card .card-content{
+  padding: 5px 24px 24px 24px !important;
+} */
+
+.icon-row{
+  text-align: left;
+  padding: 4% 4% 0 4%;
+  color: rgb(100, 99, 99) !important;
+}
+
+.icon-row .add-pad{
+  padding-left: 8px;
+}
