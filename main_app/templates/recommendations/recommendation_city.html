@@ -1,16 +1,22 @@
+<!-- HTML page showing recommendations based of city -->
+
 
 {% extends 'base.html' %}
 
 {% block content %}
-{% for rec in object_list %}
+
+<h1>rec city around</h1>
 <div class="row">
+  {% for rec in object_list %}
     <a href="{% url 'detail' rec.id %}">
-      <div class="col l6 offset-l3 m8 offset-m2">
+      <div class="col l4 m8 offset-m2">
         <div class="card">
           {% if rec.photo_set %}
           <div class="card-image">
-            <img src= {{ rec.photo_set.first.url }} >
-            <span class="card-title">Disneyland<br>{{ rec.get_city_display}}</span>
+            {% if rec.photo_set.first.url %}
+            <img src="{{ rec.photo_set.first.url }}">
+            <span class="card-title">{{ rec.name }}<br>{{ rec.get_city_display}}</span>
+            {% endif %}
           </div>
           <div class="card-content">
             <p>{{ rec.user }}: {{ rec.description }}</p>
@@ -33,9 +39,8 @@
         </div>
       </div>
     </a>
+    {% endfor %}
   </div>
-{% endfor %}
-<h1>rec city around</h1>
 <div class="row">
   <div class="col l4 m8 offset-m2">
     <div class="card">
