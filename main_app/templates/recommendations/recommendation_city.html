@@ -4,15 +4,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for rec in object_list %}
+
+<h1>rec city around</h1>
 <div class="row">
+  {% for rec in object_list %}
     <a href="{% url 'detail' rec.id %}">
-      <div class="col l6 offset-l3 m8 offset-m2">
+      <div class="col l4 m8 offset-m2">
         <div class="card">
           {% if rec.photo_set %}
           <div class="card-image">
-            <img src= {{ rec.photo_set.first.url }} >
-            <span class="card-title">Disneyland<br>{{ rec.get_city_display}}</span>
+            {% if rec.photo_set.first.url %}
+            <img src="{{ rec.photo_set.first.url }}">
+            <span class="card-title">{{ rec.name }}<br>{{ rec.get_city_display}}</span>
+            {% endif %}
           </div>
           <div class="card-content">
             <p>{{ rec.user }}: {{ rec.description }}</p>
@@ -35,58 +39,7 @@
         </div>
       </div>
     </a>
+    {% endfor %}
   </div>
-{% endfor %}
-<h1>rec city around</h1>
-<div class="row">
-  <div class="col l4 m8 offset-m2">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1585101864042-3e91c999c555?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80">
-        <span class="card-title">Lisboa, Portugal</span>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively.</p>
-      </div>
-      <div class="card-action">
-        <a href="#">#Lisboa</a>
-        <a href="#">View more in {{ context.reccomdenation.city }}</a>
-      </div>
-    </div>
-  </div>
-  <div class="col l4 m8 offset-m2">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
-        <span class="card-title">Amsterdam, Netherlands</span>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively.</p>
-      </div>
-      <div class="card-action">
-        <a href="#">#DutchColony</a>
-        <a href="#">View more in {{ rec.city }}</a>
-      </div>
-    </div>
-  </div>
-  <div class="col l4 m8 offset-m2">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1465188466731-618dfc07a57d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
-        <span class="card-title">Stairway to Heaven/Haiku Stairs<br>Hawai'i, USA</span>
-      </div>
-      <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively.</p>
-      </div>
-      <div class="card-action">
-        <a href="#">#Hawaii</a>
-        <a href="#">View more in {{ rec.city }}</a>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
 
