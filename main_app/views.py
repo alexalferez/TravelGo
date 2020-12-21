@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile, Recommendation, Photo, CITIES
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import RecommendationForm
+from .forms import RecommendationForm, CommentForm
 # from django.shortcuts import get_object_or_404
 # photo imports below
 import uuid
@@ -90,6 +90,13 @@ class ProfileDelete(DeleteView):
   model = Profile
   success_url = '/'
 
+def add_comment(request, recommendation_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.recommendation_id = recommendation_id
+    new_comment.save()
+  return redirect('detail', recommendation_id=recommendation_id)
 
 def add_photo(request, recommendation_id):
     # photo-file will be the "name" attribute on the <input type="file">

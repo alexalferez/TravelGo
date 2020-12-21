@@ -9,7 +9,7 @@ urlpatterns = [
     path('recommendations/<int:pk>/update/', views.RecommendationUpdate.as_view(), name='update'),
     path('recommendations/<int:pk>/delete/', views.RecommendationDelete.as_view(), name='delete'),
     path('recommendations/<int:recommendation_id>/add_photo/', views.add_photo, name='add_photo'),
-    
+    path('recommendations/<int:recommendation_id>/add_comment/', views.add_comment, name='add_comment'),
     path('recommendations/<str:city>/', views.RecommendationCityList.as_view(), name='city_index'),
 
     path('profile/', views.ProfileList.as_view(), name='profile_index'),

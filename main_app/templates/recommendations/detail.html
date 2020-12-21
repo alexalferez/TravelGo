@@ -24,6 +24,30 @@
   <br><br>
   <input type="submit" class="btn" value="Upload Photo">
 </form>
-
+<hr>
+<br><br>
+<div class="col s6">
+  <form action="{% url 'add_comment' recommendation.id %}" method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="text" name="comment">
+    <input type="submit" class="btn" value="Add Comment">
+  </form>
+  <br>
+  <table class="striped">
+    <thead>
+      <tr><th>Date</th><th>Comment</th></tr>
+    </thead>
+    <tbody>
+      {% for comment in recommendation.comment_set.all %}
+        <tr>
+          <td>{{comment.date}}</td>
+          <td>{{comment.comment}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
 {% endblock %}
 
