@@ -72,7 +72,7 @@ class ProfileList(ListView):
 
 class ProfileDetail(DetailView):
   model = Profile
-  success_url = '/'
+  
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
   model = Profile
