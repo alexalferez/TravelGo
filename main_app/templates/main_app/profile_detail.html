@@ -1,20 +1,18 @@
-
 <!-- HTML page for user's profile -->
 
 {% extends 'base.html' %}
 
 {% block content %}
 <div class="row">
-  <h1>{{ object_list.first.user }}</h1>
-  {% for rec in object_list.first.user.recommendation_set.all %}
-  <h1>{{ rec.name }}</h1>
-  <h1>{{ rec.city }}</h1>
-  <h1>{{ rec.description }}</h1>
-  {% endfor %}
-  <div class="col l1 offset-l3"><i class="material-icons person">person</i></div>
+  <h1 class="profile-copy">{{ profile.name }}</h1>
+  <div class="col l1 offset-l2 offset-m2"><i class="material-icons person">person</i></div>
   <div class="col l1 user-specs" id="rec">Recommendations<br/><span>235</span></div>
   <div class="col l1 user-specs" id="following">Following<br/><span>189</span></div>
   <div class="col l1 user-specs" id="follwers">Follwers<br/><span>89</span></div>
+</div>
+<div class="row">
+  <p class="profile-copy">{{ profile.city }}</p>
+  <p class="profile-copy">{{ profile.description }}</p>
 </div>
 
 <!-- data should be coming in dynamically from database -->
@@ -23,7 +21,9 @@
     <div class="card">
       <div class="card-image">
         <img src="https://images.unsplash.com/photo-1585101864042-3e91c999c555?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80">
-        <span class="card-title">Lisboa, Portugal</span>
+        {% for rec in profile.recommendation %}
+        <span class="card-title">{{ rec.name }}</span>
+        {% endfor %}
       </div>
       <div class="card-content">
         <p>I am a very simple card. I am good at containing small bits of information.
@@ -119,5 +119,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

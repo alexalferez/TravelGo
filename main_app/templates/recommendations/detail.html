@@ -4,17 +4,29 @@
 
 {% block content %}
 
-<h1>More things to do around {{ recommendation.city }}</h1>
-
-<h1>detail page</h1>
-
-<!--------------------PHOTO------------------------->
-{% for photo in recommendation.photo_set.all %}
-<img class="responsive-img card-panel" src="{{photo.url}}">
-{% empty %} <!----------instead of if/ else-------------->
-<div class="card-panel teal-text center-align">No Photos Uploaded</div>
-{% endfor %}
-
+<h3>{{ recommendation.name }} in {{ recommendation.city }} by @{{ recommendation.user }}</h3>
+<div class="row">
+  <div class="col l12">
+    <div class="card">
+      <div class="card-image">
+        <!--------------------PHOTO------------------------->
+        {% for photo in recommendation.photo_set.all %}
+        <img src="{{photo.url}}">
+        <span class="card-title">{{ recommendation.name }}<br>{{ recommendation.city }}</span>
+        {% empty %} <!----------instead of if/ else-------------->
+        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+        {% endfor %}
+      </div>
+      <div class="card-content">
+        <p><strong>{{ recommendation.user }}</strong> {{ recommendation.description }}</p>
+        <p style="color:teal; text-align: left">view all comments</p>
+        <p style="text-align: left"><strong>dummy_user1</strong> omg I love roscoes</p>
+        <p style="text-align: left"><strong>dummy_user12</strong> roscoes > KFC</p>
+        <p style="text-align: left"><strong>dummy_user36</strong> @dummy_user12 fax</p>
+      </div>
+    </div>
+  </div>
+</div>
 <!------------FORM TO ADD A PHOTO--------------->
 <!-------------enctype - any time you send a file, it's send in multiple parts------------>
 <form action="{% url 'add_photo' recommendation.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
