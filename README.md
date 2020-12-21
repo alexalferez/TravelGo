@@ -13,8 +13,6 @@ The UI is centered around providing users with the ability to find inspiration f
 - search by location for those who know where they want to search
 
 
-
-
 ## Screenshots
 
 ## Technologies Used
@@ -27,6 +25,24 @@ The UI is centered around providing users with the ability to find inspiration f
 - AWS S3 Cloud Storage
 - Django Authentication
 
+## Getting Started  
+---
+Project planning elements:  
+- Our [Trello Planning Board][4] includes details of the team workflow as well as our ERD, Wireframes, and User Stories.
+- More details on our project pitch are in our [Pitch Deck][5]
+   
+Check out TravelGo on Heroku!
+
+## Next Steps  
+---
+Future enhancements of this project include:  
+- expanding the scope of the project beyond four cities on the west coast of the USA
+- search by map UI where users can find recommendations via interactive map
+- itenerary feature that allows the user to add recommendations to a potential itenerary
+- Search feature that will query different attributes of a recommendation such as "night clubs" or "hiking".
+
 [1]: https://github.com/jamesjkim88
 [2]: https://github.com/alexalferez
 [3]: https://github.com/thomstrub/
+[4]: https://trello.com/invite/b/QJiYx0lW/5efabd104332f57874b741a13bf66114/travelgo
+[5]: https://docs.google.com/presentation/d/1B9WzjgWKN_j_kcsjMiYXFOeID0o8sJ49I4FcEguDTHw/edit?usp=sharing
