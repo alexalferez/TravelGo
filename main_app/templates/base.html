@@ -23,7 +23,7 @@
           
           {% if user.is_authenticated %}
           <li><a href="{% url 'create' %}">Add Recommendation</a></li>
-          <li><a href="#">Profile</a></li>
+          <li><a href="{% url 'profile_detail' %}">Profile</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
