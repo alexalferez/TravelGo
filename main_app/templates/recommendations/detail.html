@@ -39,7 +39,7 @@
     <tbody>
       {% for comment in recommendation.comment_set.all %}
         <tr>
-          <td>{{comment.date}}</td>
+          <td>{{comment.created}}</td>
           <td>{{comment.comment}}</td>
         </tr>
       {% endfor %}
