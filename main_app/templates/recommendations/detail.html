@@ -1,32 +1,19 @@
 <!-- recommendation detail page -->
-
 {% extends 'base.html' %}
 
 {% block content %}
 
-<h3>{{ recommendation.name }} in {{ recommendation.city }} by @{{ recommendation.user }}</h3>
-<div class="row">
-  <div class="col l12">
-    <div class="card">
-      <div class="card-image">
-        <!--------------------PHOTO------------------------->
-        {% for photo in recommendation.photo_set.all %}
-        <img src="{{photo.url}}">
-        <span class="card-title">{{ recommendation.name }}<br>{{ recommendation.city }}</span>
-        {% empty %} <!----------instead of if/ else-------------->
-        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-        {% endfor %}
-      </div>
-      <div class="card-content">
-        <p><strong>{{ recommendation.user }}</strong> {{ recommendation.description }}</p>
-        <p style="color:teal; text-align: left">view all comments</p>
-        <p style="text-align: left"><strong>dummy_user1</strong> omg I love roscoes</p>
-        <p style="text-align: left"><strong>dummy_user12</strong> roscoes > KFC</p>
-        <p style="text-align: left"><strong>dummy_user36</strong> @dummy_user12 fax</p>
-      </div>
-    </div>
-  </div>
-</div>
+<h1>More things to do around {{ recommendation.city }}</h1>
+
+<h1>detail page</h1>
+
+<!--------------------PHOTO------------------------->
+{% for photo in recommendation.photo_set.all %}
+<img class="responsive-img card-panel" src="{{photo.url}}">
+{% empty %} <!----------instead of if/ else-------------->
+<div class="card-panel teal-text center-align">No Photos Uploaded</div>
+{% endfor %}
+
 <!------------FORM TO ADD A PHOTO--------------->
 <!-------------enctype - any time you send a file, it's send in multiple parts------------>
 <form action="{% url 'add_photo' recommendation.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
@@ -36,6 +23,31 @@
   <br><br>
   <input type="submit" class="btn" value="Upload Photo">
 </form>
-
+<br><br>
+<div class="col s6">
+  <form action="{% url 'add_comment' recommendation.id %}" method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="text" name="comment">
+    <input type="submit" class="btn" value="Add Comment">
+  </form>
+  <br>
+  <table class="striped">
+    <thead>
+      <tr><th>Date</th><th>Comment</th></tr>
+    </thead>
+    <tbody>
+      {% for comment in recommendation.comment_set.all %}
+        <tr>
+          <td>{{comment.created}}</td>
+          <td>{{comment.comment}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
 {% endblock %}
+
+
 
