@@ -1,19 +1,28 @@
 # Travel Go
 ## Intro
-TravelGo is a web application dedicated to finding and sharing expereinces. Users can inspiration for travel, adventures, weekend getaways, and cool city spots. Log in and add a recommendation, or check out other users' recommendations for four main cities on the West Coast of the United States. 
+---
+<strong> TravelGo </strong> is a web application dedicated to finding and sharing expereinces. Users post recommentations for others find inspiration for travel, adventures, weekend getaways, and cool city spots in four main cities on the West Coast of the United States. 
+
 
 ## Background
-This project was built by [James Kim][1], [Alex Alferez][2], and [Thom Strub][3] - three West Coast USA devs who love finding new experiences. The internet has plenty of travel sites, but most are review based and offer a complex UI. TravelGo's strenth is its focus on one thing- sharing experiences so they can help people find something cool to do quickly. 
-
-The UI is centered around providing users with the ability to find inspiration for a last minute trip or help others do the same. It featues:  
+---
+This project was built by [James Kim][1], [Alex Alferez][2], and [Thom Strub][3] - three West Coast devs who love exploring.  <details>
+<summary> <strong>TravelGo's</strong> strength is its focus on one thing- shared experiences that help people find inspiration quickly. 
+</summary>
+<p>
+The internet has plenty of travel sites, however, many are slightly complicated, with review systems and user check-ins. 
+<strong> TravelGo </strong> provides users with a simplified UI to find inspiration for a last minute trip or help others do the same. It featues:
+  
 - user-generated ideas
 - minimalist UI to focus on the recommendations from the users
 - comments from other users to offer more insight or detail for a recommendation
 - photos uploaded by users to show off their recommendations
 - search by location for those who know where they want to search
-
+</p>
+</details>
 
 ## Screenshots
+---
 
 ## Technologies Used
 ---
