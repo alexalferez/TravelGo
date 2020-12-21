@@ -16,7 +16,7 @@
           <p>{{ rec.user }}: {{ rec.description }}</p>
         </div>
         <div class="card-action">
-          <a href="#">@{{ rec.user }}</a>
+          <a href="{% url 'profile_detail' rec.user.profile.id %}">@{{ rec.user }}</a>
           
           <a href="{% url 'city_index' rec.get_city_url %}">View more in {{ rec.get_city_display }}</a>
         </div>
