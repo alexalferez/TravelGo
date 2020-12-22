@@ -17,7 +17,8 @@
           <span class="card-title grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">close</i></span>
           <img src="{{ recommendation.photo_set.first.url }}" width="50%">
           <p><a href="#">{{ recommendation.user }}: {{ recommendation.description }}</a></p>
-          <button type="submit">Edit</button> <button type="submit" class="red">Delete</button>
+          <a href="{% url 'update' recommendation.id %}">Edit</a> <a href="{% url 'delete' recommendation.id %}">Delete</a>
+          <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
         </div>
       </div>
     </div>
