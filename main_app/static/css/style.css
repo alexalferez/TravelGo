@@ -15,7 +15,7 @@ body{
 }
 
 .card-title{
-  font-weight: 500 !important;
+  font-weight: 300 !important;
 }
 
 .card-content{
@@ -132,6 +132,7 @@ span.comment-date{
 
 .rec-name{
   cursor: pointer;
+  font-size: 26px;
 }
 
 .activator{
