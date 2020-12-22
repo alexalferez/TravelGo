@@ -46,7 +46,7 @@ class RecommendationCreate(LoginRequiredMixin, CreateView):
 
 class RecommendationUpdate(UpdateView):
   model = Recommendation
-  fields = ['name', 'city','discrpition']
+  fields = ['name', 'city','description']
 
 class RecommendationDelete(DeleteView):
   model = Recommendation
