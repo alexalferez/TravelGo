@@ -13,11 +13,10 @@ import os
 import environ
 environ.Env()
 environ.Env.read_env()
-from environs import Env
+
 from pathlib import Path
 
-env = Env()
-env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,8 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-GOOGLE_MAPS_API_KEY = env.str('GOOGLE_MAPS_API_KEY')
-GOOGLE_MAPS_SECRET = env.str('GOOGLE_MAPS_SECRET')
+
 
 # Application definition
 
