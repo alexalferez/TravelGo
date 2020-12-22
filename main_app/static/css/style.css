@@ -7,11 +7,11 @@ body{
 
 .navbar-fixed{
   margin-bottom: 50px;
-  padding: 0 7% important;
 }
 
 .nav-wrapper{
   background: #87ceeb !important;
+  padding: 0 10% !important;
 }
 
 .card-title{
@@ -101,3 +101,40 @@ span.comment-date{
   font-size: 14px !important;
   padding: 16px 0 !important;
 }
+
+.airplane-icon {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  padding-left: 0.25em;
+}
+
+.airplane-icon i{
+  font-size: 45px !important;
+}
+
+.map{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.show-map{
+  display: block;
+}
+
+.hide-map{
+  display: none;
+  transition: display 2s;
+}
+
+.rec-name{
+  cursor: pointer;
+}
+
+.activator{
+  cursor: pointer;
+}
+
