@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.conf import settings
 from .maps_url_signature import sign_url
 from django.contrib.auth.models import User
+import os
 # Create your models here.
 CITIES = (
     ('LA', 'Los Angeles'),
@@ -12,8 +13,9 @@ CITIES = (
     ('P', 'Portland'),
     ('S', 'Seattle')
 )
-KEY = settings.GOOGLE_MAPS_API_KEY
-SECRET = settings.GOOGLE_MAPS_SECRET
+
+KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
+SECRET = os.environ.get('GOOGLE_MAPS_SECRET')
 
 class Profile(models.Model):
     name = models.CharField(max_length=100)
@@ -82,6 +84,7 @@ class Recommendation(models.Model):
         markers = "&markers=color:blue|" + place_name + "," + city + "," + state
         key = f"&key={KEY}"
         base_url = api_url + center_url + size_and_zoom + markers + key
+        print(base_url, "<---- base", SECRET, "<secret------===")
         return_url = sign_url(base_url, SECRET)
         return return_url
     
