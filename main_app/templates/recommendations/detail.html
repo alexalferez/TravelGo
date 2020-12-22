@@ -2,7 +2,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <h1>{{ recommendation.name }} by @{{ recommendation.user }}</h1>
 <div class="row">
     <div class="col l6 offset-l3 m8 offset-m2">
@@ -12,54 +11,46 @@
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">more_vert</i></span>
-          <p><a href="#">{{ recommendation.user }}: {{ recommendation.description }}</a></p>
-        </div>
+          <span class='icon-row'><i class="material-icons">thumb_up</i> <i class="material-icons">comment</i> <i class="material-icons">send</i></span>
+          <p><a href="#"><strong>{{ recommendation.user }}</strong> {{ recommendation.description }}</a></p>
+          <form action="{% url 'add_comment' recommendation.id %}" method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <input type="text" name="comment" placeholder='Say something'>
+            <!-- <input type="submit" class="btn" value="Add Comment"> -->
+          </form>
+          {% for comment in recommendation.comment_set.all %}
+            <p><strong>{{ comment.user }}</strong> {{comment.comment}} <span class="comment-date right">{{comment.created}}</span></p>
+          {% endfor %}
+          </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">close</i></span>
           <img src="{{ recommendation.photo_set.first.url }}" width="50%">
           <p><a href="#">{{ recommendation.user }}: {{ recommendation.description }}</a></p>
-          <a href="{% url 'update' recommendation.id %}">Edit</a>
-          <a href="{% url 'delete' recommendation.id %}">Delete</a>
+
+          <!------------FORM TO ADD A PHOTO--------------->
+          <!-------------enctype - any time you send a file, it's send in multiple parts------------>
+          <form action="{% url 'add_photo' recommendation.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+            {% csrf_token %}
+          <!------------------name property matches with request.files.get in views.py---------------------->
+            <input type="file" name="photo-file">
+            <br><br>
+            <input type="submit" class="btn" value="Upload Photo">
+          </form>
+          <a class="waves-effect waves-light btn" href="{% url 'update' recommendation.id %}">Edit</a>
+          <a class="waves-effect waves-light btn red" href="{% url 'delete' recommendation.id %}">Delete</a>
           <!-- <form action="{% url 'update' recommendation.id %}" method="post"></form><button type="submit">Edit</button></form> -->
           <!-- <form action="{% url 'delete' recommendation.id %}" method="post"></form><button type="submit" class="red">Delete</button></form> -->
+
+          <a href="{% url 'update' recommendation.id %}">Edit</a> <a href="{% url 'delete' recommendation.id %}">Delete</a>
+          <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
+
         </div>
       </div>
     </div>
 </div>
 
-<!------------FORM TO ADD A PHOTO--------------->
-<!-------------enctype - any time you send a file, it's send in multiple parts------------>
-<form action="{% url 'add_photo' recommendation.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-  {% csrf_token %}
-<!------------------name property matches with request.files.get in views.py---------------------->
-  <input type="file" name="photo-file">
-  <br><br>
-  <input type="submit" class="btn" value="Upload Photo">
-</form>
-<br><br>
-<div class="col s6">
-  <form action="{% url 'add_comment' recommendation.id %}" method="post">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-    <input type="text" name="comment">
-    <input type="submit" class="btn" value="Add Comment">
-  </form>
-  <br>
-  <table class="striped">
-    <thead>
-      <tr><th>Date</th><th>Comment</th></tr>
-    </thead>
-    <tbody>
-      {% for comment in recommendation.comment_set.all %}
-        <tr>
-          <td>{{comment.created}}</td>
-          <td>{{comment.comment}}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-</div>
+
 {% endblock %}
 
 

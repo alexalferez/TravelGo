@@ -2,7 +2,10 @@ from django.db import models
 from django.urls import reverse
 from datetime import date
 from django.utils import timezone
+from django.conf import settings
+from .maps_url_signature import sign_url
 from django.contrib.auth.models import User
+import os
 # Create your models here.
 CITIES = (
     ('LA', 'Los Angeles'),
@@ -10,6 +13,9 @@ CITIES = (
     ('P', 'Portland'),
     ('S', 'Seattle')
 )
+
+KEY = os.environ['GOOGLE_MAPS_API_KEY']
+SECRET = os.environ['GOOGLE_MAPS_SECRET']
 
 class Profile(models.Model):
     name = models.CharField(max_length=100)
@@ -62,7 +68,25 @@ class Recommendation(models.Model):
     def get_city_url(self):
         return self.get_city_display().lower().replace(" ", "")
         
+    def get_map_url(self):
+        place_name = self.name.replace(" ", "+")
+        city = self.get_city_display().replace(" ", "+")
+        if self.city == "S":
+            state = "WA"
+        elif self.city == "P":
+            state = "OR"
+        else:
+            state = "CA"
 
+        api_url = "https://maps.googleapis.com/maps/api/staticmap?" 
+        center_url = "center=" + place_name + "," + city + "," + state
+        size_and_zoom = "&zoom=14&size=400x400"
+        markers = "&markers=color:blue|" + place_name + "," + city + "," + state
+        key = f"&key={KEY}"
+        base_url = api_url + center_url + size_and_zoom + markers + key
+        print(base_url, "<---- base", SECRET, "<secret------===")
+        return_url = sign_url(base_url, SECRET)
+        return return_url
     
 ## Add photo class for photo model
 class Photo(models.Model):
@@ -84,7 +108,6 @@ class Comment(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
-        self.recommendation = self.user.recommendation_set.first()
         return super(Comment, self).save(*args, **kwargs)
 
     def __str__(self):

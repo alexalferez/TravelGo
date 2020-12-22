@@ -11,7 +11,7 @@
   <div class="col l1 user-specs" id="follwers">Follwers<br/><span>89</span></div>
 </div>
 <div class="row">
-  <p class="profile-copy">{{ profile.city }}</p>
+  <p class="profile-copy">{{ profile.get_city_display }}</p>
   <p class="profile-copy">{{ profile.description }}</p>
 </div>
 
@@ -29,7 +29,7 @@
       </div>
       <div class="card-action">
         <a href="#">{{ rec.name }}</a>
-        <a href="#">View more in {{ rec.get_city_url }}</a>
+        <a href="{% url 'city_index' rec.get_city_url %}">View more in {{ rec.get_city_display }}</a>
       </div>
     </div>
   </div>
