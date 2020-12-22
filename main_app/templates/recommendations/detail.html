@@ -23,6 +23,7 @@
             <p><strong>{{ comment.user }}</strong> {{comment.comment}} <span class="comment-date right">{{comment.created}}</span></p>
           {% endfor %}
           </div>
+          <img src="{{ recommendation.get_map_url }}">
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">close</i></span>
           <img src="{{ recommendation.photo_set.first.url }}" width="50%">
