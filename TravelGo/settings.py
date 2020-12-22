@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
+GOOGLE_MAPS_SECRET = os.environ.get('GOOGLE_MAPS_SECRET')
 
 # Application definition
 
