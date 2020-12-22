@@ -3,6 +3,7 @@ from django.urls import reverse
 from datetime import date
 from django.utils import timezone
 from django.conf import settings
+from .maps_url_signature import sign_url
 from django.contrib.auth.models import User
 # Create your models here.
 CITIES = (
