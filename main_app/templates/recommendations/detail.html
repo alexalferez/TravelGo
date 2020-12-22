@@ -53,6 +53,16 @@
     </div>
 </div>
 
+<script>
+  let recName = document.querySelector('.rec-name');
+  recName.addEventListener('click', evt => {
+    evt.preventDefault();
+    console.log('click');
+    let mapImg = document.querySelector('.map');
+    mapImg.classList.toggle('show-map');
+    mapImg.classList.toggle('hide-map');
+  });
+  </script>
 
 {% endblock %}
 
