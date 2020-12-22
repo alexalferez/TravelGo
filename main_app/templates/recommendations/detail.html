@@ -13,6 +13,7 @@
           <section class="map hide-map">
             <img class="map-img" src="{{ recommendation.get_map_url }}">
           </section>
+
           <p class="card-title grey-text text-darken-4"><span class='rec-name'>{{ recommendation.name }}</span> <span class="activator"><i class="material-icons right">more_vert</i></span></p>
           <span class='icon-row'><i class="material-icons">thumb_up</i> <i class="material-icons">comment</i> <i class="material-icons">send</i></span>
           <p><a href="#"><strong>{{ recommendation.user }}</strong> {{ recommendation.description }}</a></p>
@@ -62,7 +63,7 @@
     mapImg.classList.toggle('show-map');
     mapImg.classList.toggle('hide-map');
   });
-  </script>
+</script>
 
 {% endblock %}
 
