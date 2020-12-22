@@ -10,10 +10,7 @@
           <img src="{{ recommendation.photo_set.first.url }}">
         </div>
         <div class="card-content">
-          <section class="map hide-map">
-            <img class="map-img" src="{{ recommendation.get_map_url }}">
-          </section>
-          <span class="card-title grey-text text-darken-4 rec-name">{{ recommendation.name }} <span class="activator"><i class="material-icons right">more_vert</i></span></span>
+          <span class="card-title activator grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">more_vert</i></span>
           <span class='icon-row'><i class="material-icons">thumb_up</i> <i class="material-icons">comment</i> <i class="material-icons">send</i></span>
           <p><a href="#"><strong>{{ recommendation.user }}</strong> {{ recommendation.description }}</a></p>
           <form action="{% url 'add_comment' recommendation.id %}" method="post">
@@ -26,7 +23,7 @@
             <p><strong>{{ comment.user }}</strong> {{comment.comment}} <span class="comment-date right">{{comment.created}}</span></p>
           {% endfor %}
           </div>
-          <img src="{{ recommendation.get_map_url }}">
+          
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">close</i></span>
           <img src="{{ recommendation.photo_set.first.url }}" width="50%">
@@ -44,26 +41,16 @@
           </form>
           <a class="waves-effect waves-light btn" href="{% url 'update' recommendation.id %}">Edit</a>
           <a class="waves-effect waves-light btn red" href="{% url 'delete' recommendation.id %}">Delete</a>
-
-          
+          <!-- <form action="{% url 'update' recommendation.id %}" method="post"></form><button type="submit">Edit</button></form> -->
+          <!-- <form action="{% url 'delete' recommendation.id %}" method="post"></form><button type="submit" class="red">Delete</button></form> -->
+          <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
+          <img src="{{ recommendation.get_map_url }}">
         </div>
       </div>
     </div>
 </div>
 
-<script>
 
-
-let recName = document.querySelector('.rec-name');
-recName.addEventListener('click', evt => {
-  evt.preventDefault();
-  console.log('click');
-  let mapImg = document.querySelector('.map');
-  mapImg.classList.toggle('show-map');
-  mapImg.classList.toggle('hide-map');
-});
-
-</script>
 {% endblock %}
 
 
