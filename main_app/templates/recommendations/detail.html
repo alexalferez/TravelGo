@@ -44,7 +44,7 @@
 
           <a href="{% url 'update' recommendation.id %}">Edit</a> <a href="{% url 'delete' recommendation.id %}">Delete</a>
           <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
-
+          <img src="{{ recommendation.get_map_url }}">
         </div>
       </div>
     </div>
