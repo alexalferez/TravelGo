@@ -49,10 +49,25 @@ body{
 
 .icon-row{
   text-align: left;
-  padding: 4% 4% 0 4%;
+  padding-right: 0.5em !important;
   color: rgb(100, 99, 99) !important;
+}
+
+.icon-row i{
+  padding-right: 0.5em;
+  font-size: 16px !important;
 }
 
 .icon-row .add-pad{
   padding-left: 8px;
+}
+
+a.btn{
+  color: #fff !important;
+}
+
+span.comment-date{
+  font-size: 12px !important;
+  vertical-align: middle !important;
+  padding-top:0.27em;
 }
