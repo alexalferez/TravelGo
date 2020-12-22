@@ -2,22 +2,23 @@
 
 {% block content %}
 
-{% for rec in recommendations %}
+
 
 <div class="row">
+  {% for rec in recommendations %}
   <a href="{% url 'detail' rec.id %}">
-    <div class="col l6 offset-l3 m8 offset-m2">
+    <div class="col l4 m12">
       <div class="card">
         {% if rec.photo_set %}
         <div class="card-image">
           <img src= {{ rec.photo_set.first.url }} >
+          <span class="card-title">{{ rec.name }}<br/>{{ rec.get_city_display }}</span>
         </div>
         <div class="card-content">
           <p>{{ rec.user }}: {{ rec.description }}</p>
         </div>
         <div class="card-action">
           <a href="{% url 'profile_detail' rec.user.profile.id %}">@{{ rec.user }}</a>
-          
           <a href="{% url 'city_index' rec.get_city_url %}">View more in {{ rec.get_city_display }}</a>
         </div>
         {% else %}
@@ -33,6 +34,6 @@
       </div>
     </div>
   </a>
+  {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}
