@@ -93,7 +93,7 @@ class ProfileDelete(DeleteView):
 
 def add_comment(request,recommendation_id):
   form = CommentForm(request.POST)
-  user = Recommendation.objects.get(id=recommendation_id).user
+  user = request.user
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.user = user
