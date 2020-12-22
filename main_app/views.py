@@ -96,6 +96,7 @@ def add_comment(request,recommendation_id):
   user = request.user
   if form.is_valid():
     new_comment = form.save(commit=False)
+    print(user, "<-------- user")
     new_comment.user = user
     print(recommendation_id, "recommendation id <==================")
     new_comment.recommendation_id = recommendation_id
