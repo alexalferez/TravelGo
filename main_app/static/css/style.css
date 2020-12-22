@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 body{
   background-color: #fbfbfb;
@@ -6,6 +7,7 @@ body{
 
 .navbar-fixed{
   margin-bottom: 50px;
+  padding: 0 7% important;
 }
 
 .nav-wrapper{
@@ -25,6 +27,11 @@ body{
   font-weight: 300;
 }
 
+a.brand-logo{
+  font-family: 'Lobster';
+  font-size: 3em;
+  letter-spacing: 1px;
+}
 
 #first-card-top-pad{
   padding-top: 50px !important;;
@@ -49,10 +56,48 @@ body{
 
 .icon-row{
   text-align: left;
-  padding: 4% 4% 0 4%;
+  padding-right: 0.5em !important;
   color: rgb(100, 99, 99) !important;
+}
+
+.icon-row i{
+  padding-right: 0.5em;
+  font-size: 16px !important;
 }
 
 .icon-row .add-pad{
   padding-left: 8px;
+}
+
+a.btn{
+  color: #fff !important;
+}
+
+span.comment-date{
+  font-size: 12px !important;
+  vertical-align: middle !important;
+  padding-top:0.27em;
+}
+
+.card{
+  transition: 0.3s !important;
+  width: 99%;
+}
+
+.card:hover{
+  width: 100%;
+}
+
+.card-image {
+  height: 500px;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .card-action{
+  font-size: 14px !important;
+  padding: 16px 0 !important;
 }
