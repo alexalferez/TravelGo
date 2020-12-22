@@ -71,3 +71,12 @@ span.comment-date{
   vertical-align: middle !important;
   padding-top:0.27em;
 }
+
+.card{
+  transition: 0.3s !important;
+  width: 99%;
+}
+
+.card:hover{
+  width: 100%;
+}

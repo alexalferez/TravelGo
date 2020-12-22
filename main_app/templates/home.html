@@ -2,11 +2,12 @@
 
 {% block content %}
 
-{% for rec in recommendations %}
+
 
 <div class="row">
+  {% for rec in recommendations %}
   <a href="{% url 'detail' rec.id %}">
-    <div class="col l6 offset-l3 m8 offset-m2">
+    <div class="col l4 m12">
       <div class="card">
         {% if rec.photo_set %}
         <div class="card-image">
@@ -33,6 +34,6 @@
       </div>
     </div>
   </a>
+  {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}
