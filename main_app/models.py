@@ -14,8 +14,8 @@ CITIES = (
     ('S', 'Seattle')
 )
 
-KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
-SECRET = os.environ.get('GOOGLE_MAPS_SECRET')
+KEY = os.environ['GOOGLE_MAPS_API_KEY']
+SECRET = os.environ['GOOGLE_MAPS_SECRET']
 
 class Profile(models.Model):
     name = models.CharField(max_length=100)

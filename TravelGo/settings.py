@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-
+import environ
+environ.Env()
+environ.Env.read_env()
 from environs import Env
 from pathlib import Path
 
@@ -130,3 +132,6 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+import django_heroku
+django_heroku.settings(locals())
