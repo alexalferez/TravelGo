@@ -2,7 +2,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <h1>{{ recommendation.name }} by @{{ recommendation.user }}</h1>
 <div class="row">
     <div class="col l6 offset-l3 m8 offset-m2">
@@ -28,6 +27,7 @@
           <span class="card-title grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">close</i></span>
           <img src="{{ recommendation.photo_set.first.url }}" width="50%">
           <p><a href="#">{{ recommendation.user }}: {{ recommendation.description }}</a></p>
+
           <!------------FORM TO ADD A PHOTO--------------->
           <!-------------enctype - any time you send a file, it's send in multiple parts------------>
           <form action="{% url 'add_photo' recommendation.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
@@ -41,10 +41,16 @@
           <a class="waves-effect waves-light btn red" href="{% url 'delete' recommendation.id %}">Delete</a>
           <!-- <form action="{% url 'update' recommendation.id %}" method="post"></form><button type="submit">Edit</button></form> -->
           <!-- <form action="{% url 'delete' recommendation.id %}" method="post"></form><button type="submit" class="red">Delete</button></form> -->
+
+          <a href="{% url 'update' recommendation.id %}">Edit</a> <a href="{% url 'delete' recommendation.id %}">Delete</a>
+          <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
+
         </div>
       </div>
     </div>
 </div>
+
+
 {% endblock %}
 
 
