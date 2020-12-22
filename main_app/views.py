@@ -72,11 +72,7 @@ class ProfileList(ListView):
 
 class ProfileDetail(DetailView):
   model = Profile
-<<<<<<< HEAD
-
-=======
   
->>>>>>> main
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
   model = Profile
