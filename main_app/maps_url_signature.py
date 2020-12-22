@@ -8,7 +8,7 @@ import base64
 import urllib.parse as urlparse
 
 
-def sign_url(input_url=None, secret=None):
+def sign_url(input_url, secret):
     """ Sign a request URL with a URL signing secret.
       Usage:
       from urlsigner import sign_url
