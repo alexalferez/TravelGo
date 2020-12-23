@@ -64,11 +64,13 @@ The internet has plenty of travel sites, however, many are slightly complicated,
 
 ## Getting Started  
 ---
+Check out [TravelGo on Heroku][6]! Create an account to post recommendaitons, or browse other user's posts on the home page. 
+  
 Project planning elements:  
 - Our [Trello Planning Board][4] includes details of the team workflow as well as our ERD, Wireframes, and User Stories.
 - More details on our project pitch are in our [Pitch Deck][5]
    
-Check out [TravelGo][6] on Heroku!
+
 
 ## Next Steps  
 ---
