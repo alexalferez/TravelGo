@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<h1>Around {{ object_list.first.get_city_display }}</h1>
+<h1 class="home-header">See more around <strong>{{ object_list.first.get_city_display }}</strong>...</h1>
 <div class="row">
   {% for rec in object_list %}
     <a href="{% url 'detail' rec.id %}">
@@ -19,20 +19,18 @@
             {% endif %}
           </div>
           <div class="card-content">
-            <p>{{ rec.user }}: {{ rec.description }}</p>
+            <p><strong>{{ rec.user }}</strong> {{ rec.description }}</p>
           </div>
           <div class="card-action">
-            <a href="">#{{ rec.name }}</a>
-            
+
             <a href="{% url 'profile_detail' rec.user.profile.id %}">View more from {{ rec.user }}</a>
           </div>
           {% else %}
           <div class="card-content">
             <span class="card-title">{{ rec.name }}</span>
-            <p>{{ rec.user }}: {{ rec.description }}</p>
+            <p><strong>{{ rec.user }}</strong> {{ rec.description }}</p>
           </div>
           <div class="card-action">
-            <a href="#">#{{ rec.name }}</a>
             <a href="#">View more from {{ rec.user }}</a>
           </div>
           {% endif %}

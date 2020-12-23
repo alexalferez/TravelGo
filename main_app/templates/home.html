@@ -3,7 +3,7 @@
 {% block content %}
 
 
-
+<h1 class="home-header">Check out these recommendations...</h1>
 <div class="row">
   {% for rec in recommendations %}
   <a href="{% url 'detail' rec.id %}">
@@ -15,7 +15,7 @@
           <span class="card-title">{{ rec.name }}<br/>{{ rec.get_city_display }}</span>
         </div>
         <div class="card-content">
-          <p>{{ rec.user }}: {{ rec.description }}</p>
+          <p><strong>{{ rec.user }}</strong> {{ rec.description }}</p>
         </div>
         <div class="card-action">
           <a href="{% url 'profile_detail' rec.user.profile.id %}">@{{ rec.user }}</a>

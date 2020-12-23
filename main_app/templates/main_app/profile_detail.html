@@ -3,18 +3,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-  <h1 class="profile-copy">{{ profile.name }}</h1>
-  <div class="col l1 offset-l2 offset-m2"><i class="material-icons person">person</i></div>
-  <div class="col l1 user-specs" id="rec">Recommendations<br/><span>235</span></div>
-  <div class="col l1 user-specs" id="following">Following<br/><span>189</span></div>
-  <div class="col l1 user-specs" id="follwers">Follwers<br/><span>89</span></div>
+
+<div class="profile-detail">
+  <h1 class="profile-header"><strong>{{ profile.name }}</strong></h1>
+<div class="row detail-row">
+  <div class="col l1 user-icon"><i class="material-icons person">person</i></div>
+  <div class="col l1 user-specs" id="rec">Recommendations<br/><strong>235</strong></div>
+  <div class="col l1 user-specs" id="following">Following<br/><strong>189</strong></div>
+  <div class="col l1 user-specs" id="follwers">Follwers<br/><strong>89</strong></div>
 </div>
 <div class="row">
-  <p class="profile-copy">{{ profile.get_city_display }}</p>
-  <p class="profile-copy">{{ profile.description }}</p>
+  <p class="profile-copy"><i class="material-icons">location_on</i>{{ profile.get_city_display }}</p>
+  <p class="profile-copy profile-desc">{{ profile.description }}</p>
+  <hr>
 </div>
 
+</div>
 <!-- data should be coming in dynamically from database -->
 <div class="row">
   {% for rec in profile.user.recommendation_set.all %}
