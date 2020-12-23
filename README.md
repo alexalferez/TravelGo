@@ -23,20 +23,34 @@ The internet has plenty of travel sites, however, many are slightly complicated,
 
 ## Screenshots
 ---
-Landing Page  
-![Landing](./screenshots/landing.png)  
-Django Sign-In  
-![Sign-in](./screenshots/signin.png)  
-Home / Index Page
-![Index](./screenshots/index.png)
-Recommendation  
-![Recommednation](./screenshots/recommendation.png)  
-Expand for Map and Edit / Delete Options
-![Options](./screenshots/options.png)
-Recommendation Card
-![Card](./screenshots/card_detail.png)
-Map Detail
-![Map](./screenshots/map.png)
+<details>
+<summary>
+<p> <strong> Landing Page</strong> (expand for more views)
+
+<img src="./screenshots/landing.png">
+
+</summary>  
+<strong> Django Sign-In  </strong>
+<img src="./screenshots/signin.png">
+  
+<strong> Home / Index Page </strong>
+<img src="./screenshots/index.png">
+
+<strong> Recommendation </strong> 
+<img src="./screenshots/recommendation.png">
+ 
+<strong> Expand for Map and Edit / Delete Options </strong>
+<img src="./screenshots/options.png">
+
+<strong> Recommendation Card </strong>
+<img src="./screenshots/card_detail.png">
+
+<strong> Map Detail </strong>
+<img src="./screenshots/map.png">
+
+</p>
+</details>  
+
 ## Technologies Used
 ---
 - Python
@@ -50,11 +64,13 @@ Map Detail
 
 ## Getting Started  
 ---
+Check out [TravelGo on Heroku][6]! Create an account to post recommendaitons, or browse other user's posts on the home page. 
+  
 Project planning elements:  
 - Our [Trello Planning Board][4] includes details of the team workflow as well as our ERD, Wireframes, and User Stories.
 - More details on our project pitch are in our [Pitch Deck][5]
    
-Check out [TravelGo][6] on Heroku!
+
 
 ## Next Steps  
 ---
