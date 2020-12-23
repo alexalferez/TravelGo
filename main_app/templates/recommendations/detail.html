@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ recommendation.name }} by @{{ recommendation.user }}</h1>
+<h1><strong>{{ recommendation.name }}</strong><br/>@<span>{{ recommendation.user }}</span></h1>
 <div class="row">
     <div class="col l6 offset-l3 m8 offset-m2">
       <div class="card">

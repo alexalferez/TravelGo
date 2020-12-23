@@ -5,6 +5,14 @@ body{
   font-family: Helvetica Neue, arial, sans-serif;
 }
 
+h1{
+  font-weight: 300;
+}
+
+.home-header{
+  text-align: left;
+}
+
 .navbar-fixed{
   margin-bottom: 50px;
 }
@@ -43,11 +51,12 @@ a.brand-logo{
 
 .col.l1.user-specs{
   margin: 0 25px;
+  padding: 0 !important;
+  text-align: left !important;
 }
 
-.profile-copy{
+.profile-header{
   text-align: left;
-  padding-left: 20% !important;
 }
 
 /* .card .card-content{
@@ -130,6 +139,10 @@ span.comment-date{
   transition: display 2s;
 }
 
+.row.no-pad .col{
+  padding: 0 !important;
+}
+
 .rec-name{
   cursor: pointer;
   font-size: 26px;
@@ -139,3 +152,24 @@ span.comment-date{
   cursor: pointer;
 }
 
+.profile-copy{
+  font-size: 18px !important;
+  margin: 0;
+  padding: 5px 0;
+}
+
+.profile-copy.profile-desc{
+  font-size: 14px !important;
+}
+
+.profile-detail .row{
+  text-align: left;
+}
+
+.profile-detail .row .col {
+  padding: 0 !important;
+}
+
+.profile-detail .row .col .li .user-icon{
+  margin: 0 !important;
+}
