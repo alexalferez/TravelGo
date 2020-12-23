@@ -13,6 +13,7 @@
           <section class="map hide-map">
             <img class="map-img" src="{{ recommendation.get_map_url }}">
           </section>
+
           <p class="card-title grey-text text-darken-4"><span class='rec-name'>{{ recommendation.name }}</span> <span class="activator"><i class="material-icons right">more_vert</i></span></p>
           <span class='icon-row'><i class="material-icons">thumb_up</i> <i class="material-icons">comment</i> <i class="material-icons">send</i></span>
           <p><a href="#"><strong>{{ recommendation.user }}</strong> {{ recommendation.description }}</a></p>
@@ -26,13 +27,13 @@
             <p><strong>{{ comment.user }}</strong> {{comment.comment}} <span class="comment-date right">{{comment.created}}</span></p>
           {% endfor %}
           </div>
-          <img src="{{ recommendation.get_map_url }}">
+        {% if request.user.id == recommendation.user.id %}
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">close</i></span>
           <img src="{{ recommendation.photo_set.first.url }}" width="50%">
           <p><a href="#">{{ recommendation.user }}: {{ recommendation.description }}</a></p>
           <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
-
+          
           <!------------FORM TO ADD A PHOTO--------------->
           <!-------------enctype - any time you send a file, it's send in multiple parts------------>
           <form action="{% url 'add_photo' recommendation.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
@@ -48,24 +49,24 @@
           <!-- <form action="{% url 'delete' recommendation.id %}" method="post"></form><button type="submit" class="red">Delete</button></form> -->
           <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
           <img src="{{ recommendation.get_map_url }}">
+          
         </div>
+        {% endif %}
       </div>
     </div>
 </div>
 
 <script>
-
-
-let recName = document.querySelector('.rec-name');
-recName.addEventListener('click', evt => {
-  evt.preventDefault();
-  console.log('click');
-  let mapImg = document.querySelector('.map');
-  mapImg.classList.toggle('show-map');
-  mapImg.classList.toggle('hide-map');
-});
-
+  let recName = document.querySelector('.rec-name');
+  recName.addEventListener('click', evt => {
+    evt.preventDefault();
+    console.log('click');
+    let mapImg = document.querySelector('.map');
+    mapImg.classList.toggle('show-map');
+    mapImg.classList.toggle('hide-map');
+  });
 </script>
+
 {% endblock %}
 
 
