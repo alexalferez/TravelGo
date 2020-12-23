@@ -26,10 +26,12 @@
             <p><strong>{{ comment.user }}</strong> {{comment.comment}} <span class="comment-date right">{{comment.created}}</span></p>
           {% endfor %}
           </div>
+          <img src="{{ recommendation.get_map_url }}">
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{ recommendation.name }}<i class="material-icons right">close</i></span>
           <img src="{{ recommendation.photo_set.first.url }}" width="50%">
           <p><a href="#">{{ recommendation.user }}: {{ recommendation.description }}</a></p>
+          <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
 
           <!------------FORM TO ADD A PHOTO--------------->
           <!-------------enctype - any time you send a file, it's send in multiple parts------------>
@@ -44,10 +46,8 @@
           <a class="waves-effect waves-light btn red" href="{% url 'delete' recommendation.id %}">Delete</a>
           <!-- <form action="{% url 'update' recommendation.id %}" method="post"></form><button type="submit">Edit</button></form> -->
           <!-- <form action="{% url 'delete' recommendation.id %}" method="post"></form><button type="submit" class="red">Delete</button></form> -->
-
-          <a href="{% url 'update' recommendation.id %}">Edit</a> <a href="{% url 'delete' recommendation.id %}">Delete</a>
           <!-- <button type="submit">Edit</button> <button type="submit" class="red">Delete</button> -->
-
+          <img src="{{ recommendation.get_map_url }}">
         </div>
       </div>
     </div>

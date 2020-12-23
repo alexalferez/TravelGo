@@ -22,6 +22,7 @@
             <p><strong>{{ rec.user }}</strong> {{ rec.description }}</p>
           </div>
           <div class="card-action">
+
             <a href="{% url 'profile_detail' rec.user.profile.id %}">View more from {{ rec.user }}</a>
           </div>
           {% else %}
