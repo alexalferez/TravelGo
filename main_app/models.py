@@ -87,7 +87,9 @@ class Recommendation(models.Model):
         print(base_url, "<---- base", SECRET, "<secret------===")
         return_url = sign_url(base_url, SECRET)
         return return_url
-    
+    class Meta:
+        ordering = ['-created']
+        
 ## Add photo class for photo model
 class Photo(models.Model):
     url = models.CharField(max_length=200)

@@ -32,7 +32,7 @@
         <p>{{ rec.description }}</p>
       </div>
       <div class="card-action">
-        <a href="#">{{ rec.name }}</a>
+        <a href="{% url 'detail' rec.id %}">{{ rec.name }}</a>
         <a href="{% url 'city_index' rec.get_city_url %}">View more in {{ rec.get_city_display }}</a>
       </div>
     </div>
