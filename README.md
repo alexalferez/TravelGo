@@ -1,4 +1,4 @@
-# Travel Go
+![TravelGo](./screenshots/title.png)
 ## Intro
 ---
 <strong> TravelGo </strong> is a web application dedicated to finding and sharing expereinces. Users post recommentations for others find inspiration for travel, adventures, weekend getaways, and cool city spots in four main cities on the West Coast of the United States. 
@@ -23,7 +23,20 @@ The internet has plenty of travel sites, however, many are slightly complicated,
 
 ## Screenshots
 ---
-
+Landing Page  
+![Landing](./screenshots/landing.png)  
+Django Sign-In  
+![Sign-in](./screenshots/signin.png)  
+Home / Index Page
+![Index](./screenshots/index.png)
+Recommendation  
+![Recommednation](./screenshots/recommendation.png)  
+Expand for Map and Edit / Delete Options
+![Options](./screenshots/options.png)
+Recommendation Card
+![Card](./screenshots/card_detail.png)
+Map Detail
+![Map](./screenshots/map.png)
 ## Technologies Used
 ---
 - Python
@@ -33,6 +46,7 @@ The internet has plenty of travel sites, however, many are slightly complicated,
 - PostgreSQL
 - AWS S3 Cloud Storage
 - Django Authentication
+- Google Maps API
 
 ## Getting Started  
 ---
@@ -40,7 +54,7 @@ Project planning elements:
 - Our [Trello Planning Board][4] includes details of the team workflow as well as our ERD, Wireframes, and User Stories.
 - More details on our project pitch are in our [Pitch Deck][5]
    
-Check out TravelGo on Heroku!
+Check out [TravelGo][6] on Heroku!
 
 ## Next Steps  
 ---
@@ -55,3 +69,4 @@ Future enhancements of this project include:
 [3]: https://github.com/thomstrub/
 [4]: https://trello.com/invite/b/QJiYx0lW/5efabd104332f57874b741a13bf66114/travelgo
 [5]: https://docs.google.com/presentation/d/1B9WzjgWKN_j_kcsjMiYXFOeID0o8sJ49I4FcEguDTHw/edit?usp=sharing
+[6]: https://go-travel-go.herokuapp.com/
